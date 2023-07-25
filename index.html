@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createIncrement(){
+            let value = 0;
+
+            return function increment(){
+                value = value + 1;
+                console.log(value);
+
+                const message = `current value is ${value}`
+
+                function logger(){
+                    console.log(message)
+                }
+
+                function getvalue(){
+                    return value;
+                }
+
+                return{ 
+                    logger, 
+                    getvalue,
+                }
+            }
+
+        }
+
+        const counter = createIncrement();
+         //value = 0
+        //func increment
+
+        const {
+            logger,
+            getvalue
+        }=counter()
+        //value = 1
+        //message1 = current value is 1
+        //func logger1
+        //func getvalue1
+
+        counter()
+        //value = 2
+        //message2 = current value is 2
+        //func logger2
+        //func getvalue2
+
+        
+        counter()
+        //value = 3
+        //message3 = current value is 3
+        //func logger3
+        //func getvalue3
+
+        logger()
+        console.log(getvalue());
+
+    </script>
+</body>
+</html>
